@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="ResellerSales_Fact_table">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="dimGeography" minOccurs="1" maxOccurs="unbounded" />
+<xsd:element ref="dimReseller" minOccurs="1" maxOccurs="unbounded" />
+<xsd:element ref="dimPromotion" minOccurs="1" maxOccurs="unbounded" />
+<xsd:element ref="dimProduct" minOccurs="1" maxOccurs="unbounded" />
+<xsd:element ref="dimDate" minOccurs="1" maxOccurs="unbounded" />
+<xsd:element ref="factResellerSales" minOccurs="1" maxOccurs="unbounded" />
+</xsd:sequence>
+</xsd:complexType>
+<xsd:key name="dimGeography_key">
+<xsd:selector xpath="dimGeography/geographykey" />
+<xsd:field xpath="." />
+</xsd:key>
+<xsd:keyref name="dimGeography_key_ref" refer="dimGeography_key">
+<xsd:selector xpath="dimReseller/geographykey" />
+<xsd:field xpath="." />
+</xsd:keyref>
+<xsd:key name="dimReseller_key">
+<xsd:selector xpath="dimReseller/resellerKey" />
+<xsd:field xpath="." />
+</xsd:key>
+<xsd:keyref name="dimReseller_key_ref" refer="dimReseller_key">
+<xsd:selector xpath="factResellerSales/resellerkey" />
+<xsd:field xpath="." />
+</xsd:keyref>
+<xsd:key name="dimPromotion_key">
+<xsd:selector xpath="dimPromotion/promotionkey" />
+<xsd:field xpath="." />
+</xsd:key>
+<xsd:keyref name="dimPromotion_key_ref" refer="dimPromotion_key">
+<xsd:selector xpath="factResellerSales/promotionkey" />
+<xsd:field xpath="." />
+</xsd:keyref>
+<xsd:key name="dimProduct_key">
+<xsd:selector xpath="dimProduct/productkey" />
+<xsd:field xpath="." />
+</xsd:key>
+<xsd:keyref name="dimProduct_key_ref" refer="dimProduct_key">
+<xsd:selector xpath="factResellerSales/productkey" />
+<xsd:field xpath="." />
+</xsd:keyref>
+<xsd:key name="dimDate_key">
+<xsd:selector xpath="dimDate/datekey" />
+<xsd:field xpath="." />
+</xsd:key>
+<xsd:keyref name="dimDate_key_ref" refer="dimDate_key">
+<xsd:selector xpath="factResellerSales/datekey" />
+<xsd:field xpath="." />
+</xsd:keyref>
+</xsd:element>
+<xsd:element name="dimGeography">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="geographykey" type="xsd:string" />
+<xsd:element name="City" type="xsd:string" />
+<xsd:element name="StateProvinceCode" type="xsd:string" />
+<xsd:element name="StateProvinceName" type="xsd:string" />
+<xsd:element name="CountryRegionCode" type="xsd:string" />
+<xsd:element name="EnglishCountryRegionName" type="xsd:string" />
+<xsd:element name="SpanishCountryRegionName" type="xsd:string" />
+<xsd:element name="FrenchCountryRegionName" type="xsd:string" />
+<xsd:element name="PostalCode" type="xsd:string" />
+<xsd:element name="SalesTerritoryKey" type="xsd:string" />
+<xsd:element name="IpAddressLocator" type="xsd:string" />
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="dimReseller">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="resellerkey" type="xsd:string" />
+<xsd:element name="geographykey" type="xsd:string" />
+<xsd:element name="ResellerAlternateKey" type="xsd:string" />
+<xsd:element name="Phone" type="xsd:string" />
+<xsd:element name="BusinessType" type="xsd:string" />
+<xsd:element name="ResellerName" type="xsd:string" />
+<xsd:element name="NumberEmployees" type="xsd:string" />
+<xsd:element name="OrderFrequency" type="xsd:string" />
+<xsd:element name="OrderMonth" type="xsd:string" />
+<xsd:element name="FirstOrderYear" type="xsd:string" />
+<xsd:element name="LastOrderYear" type="xsd:string" />
+<xsd:element name="ProductLine" type="xsd:string" />
+<xsd:element name="AddressLine1" type="xsd:string" />
+<xsd:element name="AddressLine2" type="xsd:string" />
+<xsd:element name="AnnualSales" type="xsd:string" />
+<xsd:element name="BankName" type="xsd:string" />
+<xsd:element name="MinPaymentType" type="xsd:string" />
+<xsd:element name="MinPaymentAmount" type="xsd:string" />
+<xsd:element name="AnnualRevenue" type="xsd:string" />
+<xsd:element name="YearOpened" type="xsd:string" />
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="dimPromotion">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="promotionkey" type="xsd:string" />
+<xsd:element name="PromotionAlternateKey" type="xsd:string" />
+<xsd:element name="EnglishPromotionName" type="xsd:string" />
+<xsd:element name="SpanishPromotionName" type="xsd:string" />
+<xsd:element name="FrenchPromotionName" type="xsd:string" />
+<xsd:element name="DiscountPct" type="xsd:string" />
+<xsd:element name="EnglishPromotionType" type="xsd:string" />
+<xsd:element name="SpanishPromotionType" type="xsd:string" />
+<xsd:element name="FrenchPromotionType" type="xsd:string" />
+<xsd:element name="EnglishPromotionCategory" type="xsd:string" />
+<xsd:element name="SpanishPromotionCategory" type="xsd:string" />
+<xsd:element name="FrenchPromotionCategory" type="xsd:string" />
+<xsd:element name="StartDate" type="xsd:string" />
+<xsd:element name="EndDate" type="xsd:string" />
+<xsd:element name="MinQty" type="xsd:string" />
+<xsd:element name="MaxQty" type="xsd:string" />
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:element name="dimProduct">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="productkey" type="xsd:string" />
+<xsd:element name="ProductAlternateKey" type="xsd:string" />
+<xsd:element name="ProductSubcategoryKey" type="xsd:string" />
+<xsd:element name="WeightUnitMeasureCode" type="xsd:string" />
+<xsd:element name="SizeUnitMeasureCode" type="xsd:string" />
+<xsd:element name="EnglishProductName" type="xsd:string" />
+<xsd:element name="SpanishProductName" type="xsd:string" />
+<xsd:element name="FrenchProductName" type="xsd:string" />
+<xsd:element name="StandardCost" type="xsd:string" />
+<xsd:element name="FinishedGoodsFlag" type="xsd:string" />
+<xsd:element name="Color" type="xsd:string" />
+<xsd:element name="SafetyStockLevel" type="xsd:string" />
+<xsd:element name="ReorderPoint" type="xsd:string" />
+<xsd:element name="ListPrice" type="xsd:string" />
+<xsd:element name="Size" type="xsd:string" />
+<xsd:element name="SizeRange" type="xsd:string" />
+<xsd:element name="Weight" type="xsd:string" />
+<xsd:element name="DaysToManufacture" type="xsd:string" />
+<xsd:element name="ProductLine" type="xsd:string" />
+<xsd:element name="DealerPrice" type="xsd:string" />
+<xsd:element name="Class" type="xsd:string" />
+<xsd:element name="Style" type="xsd:string" />
+<xsd:element name="ModelName" type="xsd:string" />
+<xsd:element name="LargePhoto" type="xsd:string" />
+<xsd:element name="EnglishDescription" type="xsd:string" />
+<xsd:element name="FrenchDescription" type="xsd:string" />
+<xsd:element name="ChineseDescription" type="xsd:string" />
+<xsd:element name="ArabicDescription" type="xsd:string" />
+<xsd:element name="HebrewDescription" type="xsd:string" />
+<xsd:element name="ThaiDescription" type="xsd:string" />
+<xsd:element name="GermanDescription" type="xsd:string" />
+<xsd:element name="JapaneseDescription" type="xsd:string" />
+<xsd:element name="TurkishDescription" type="xsd:string" />
+<xsd:element name="StartDate" type="xsd:string" />
+<xsd:element name="EndDate" type="xsd:string" />
+<xsd:element name="Status" type="xsd:string" />
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:element name="dimDate">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="datekey" type="xsd:string" />
+<xsd:element name="FullDateAlternateKey" type="xsd:string" />
+<xsd:element name="DayNumberOfWeek" type="xsd:string" />
+<xsd:element name="EnglishDayNameOfWeek" type="xsd:string" />
+<xsd:element name="SpanishDayNameOfWeek" type="xsd:string" />
+<xsd:element name="FrenchDayNameOfWeek" type="xsd:string" />
+<xsd:element name="DayNumberOfMonth" type="xsd:string" />
+<xsd:element name="DayNumberOfYear" type="xsd:string" />
+<xsd:element name="WeekNumberOfYear" type="xsd:string" />
+<xsd:element name="EnglishMonthName" type="xsd:string" />
+<xsd:element name="SpanishMonthName" type="xsd:string" />
+<xsd:element name="FrenchMonthName" type="xsd:string" />
+<xsd:element name="MonthNumberOfYear" type="xsd:string" />
+<xsd:element name="CalendarQuarter" type="xsd:string" />
+<xsd:element name="CalendarYear" type="xsd:string" />
+<xsd:element name="CalendarSemester" type="xsd:string" />
+<xsd:element name="FiscalQuarter" type="xsd:string" />
+<xsd:element name="FiscalYear" type="xsd:string" />
+<xsd:element name="FiscalSemester" type="xsd:string" />
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:element name="factResellerSales">
+<xsd:complexType>
+<xsd:all>
+<xsd:element name="productkey" type="xsd:string" />
+<xsd:element name="datekey" type="xsd:string" />
+<xsd:element name="duedate" type="xsd:string" />
+<xsd:element name="shipdate" type="xsd:string" />
+<xsd:element name="resellerKey" type="xsd:string" />
+<xsd:element name="employee" type="xsd:string" />
+<xsd:element name="promotionkey" type="xsd:string" />
+<xsd:element name="currency" type="xsd:string" />
+<xsd:element name="SalesOrderNumber" type="xsd:string" />
+<xsd:element name="SalesOrderLineNumber" type="xsd:string" />
+<xsd:element name="RevisionNumber" type="xsd:decimal" />
+<xsd:element name="OrderQuantity" type="xsd:string" />
+<xsd:element name="UnitPrice" type="xsd:decimal" />
+<xsd:element name="ExtendedAmount" type="xsd:string" />
+<xsd:element name="UnitPriceDiscountPct" type="xsd:string" />
+<xsd:element name="DiscountAmount" type="xsd:decimal" />
+<xsd:element name="ProductStandardCost" type="xsd:decimal" />
+<xsd:element name="TotalProductCost" type="xsd:string" />
+<xsd:element name="SalesAmount" type="xsd:string" />
+<xsd:element name="TaxAmt" type="xsd:string" />
+<xsd:element name="Freight" type="xsd:string" />
+<xsd:element name="CarrierTrackingNumber" type="xsd:string" />
+<xsd:element name="CustomerPONumber" type="xsd:string" />
+<xsd:element name="OrderDate" type="xsd:string" />
+<xsd:element name="DueDate" type="xsd:string" />
+<xsd:element name="ShipDate" type="xsd:string" />
+</xsd:all>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
