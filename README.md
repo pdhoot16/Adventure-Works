@@ -28,3 +28,9 @@ The information stored in the warehouse can then be used to analyse various sell
 3. Tableau
 4. Neo4j
 5. XML/XSD
+
+
+### Database Design
+
+<img src = "DW design.png">
+
