@@ -1,3 +1,0 @@
-### List of CSV files:
-
-DimDate.csv
